@@ -19,12 +19,19 @@ app_secret = os.environ["APP_SECRET"]
 user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
 
+xingzuo = os.environ["XINGZUO"]
 
 def get_weather():
   url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
   res = requests.get(url).json()
   weather = res['data']['list'][0]
   return weather['weather'], math.floor(weather['low']),math.floor(weather['high']),weather['airQuality'],weather['wind'],weather['humidity']
+
+
+def get_xingzuo():
+  url = "https://api.tianapi.com/star/index?key=6859083171726381ffd34bc51ad5592b&astro=" + xingzuo
+  res = requests.get(url).json()
+  return res['newslist'][5][content] ,res['newslist'][6][content],res['newslist'][7][content],res['newslist'][8][content]
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
@@ -56,14 +63,23 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature_hight,temperature_low,airQuality,wind,humidity = get_weather()
+
+luck_color ,luck_number ,guiren_xingzuo ,today_content = get_get_xingzuo()
+  
+
 data = {"weather":{"value":wea,"color":get_random_color()},
         "city":{"value":city},
         "temperature":{"value":temperature_hight,"color":get_random_color()},
         "temperature_low":{"value":temperature_low,"color":get_random_color()},
-        
         "airQuality":{"value":airQuality,"color":get_random_color()},
         "wind":{"value":wind,"color":get_random_color()},
         "humidity":{"value":humidity,"color":get_random_color()},
+        
+        "luck_color":{"value":luck_color,"color":get_random_color()},   
+        "luck_number":{"value":luck_number,"color":get_random_color()},        
+        "guiren_xingzuo":{"value":guiren_xingzuo,"color":get_random_color()},     
+        "today_content":{"value":today_content,"color":get_random_color()},
+        
         "love_days":{"value":get_count(),"color":get_random_color()},
         "birthday_left":{"value":get_birthday(),"color":get_random_color()},
         "birthday_boy":{"value":get_birthdayboy(),"color":get_random_color()},
