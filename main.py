@@ -62,7 +62,7 @@ def get_random_color():
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
-wea, temperature_hight,temperature_low,airQuality,wind,humidity = get_weather()
+wea, temperature_low,temperature_hight,airQuality,wind,humidity = get_weather()
 
 luck_color ,luck_number ,guiren_xingzuo ,today_content = get_xingzuo()
   
