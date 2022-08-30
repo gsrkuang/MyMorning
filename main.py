@@ -31,7 +31,7 @@ def get_weather():
 def get_xingzuo():
   url = "https://api.tianapi.com/star/index?key=6859083171726381ffd34bc51ad5592b&astro=" + xingzuo
   res = requests.get(url).json()
-  return res['newslist'][5][content] ,res['newslist'][6][content],res['newslist'][7][content],res['newslist'][8][content]
+  return res['newslist'][5]['content'] ,res['newslist'][6]['content'],res['newslist'][7]['content'],res['newslist'][8]['content']
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
