@@ -1,0 +1,34 @@
+name: afternoon
+on:
+  push:
+  schedule:
+    - cron:  "0 5 * * *"
+
+jobs:
+  send_message:
+    runs-on: ubuntu-latest
+    name: send morning to your girlfriend
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+        ref: master
+
+    - name: sender
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
+    - run: pip install -r ./requirements.txt && python ./main.py
+
+    env:
+      APP_ID: ${{ secrets.APP_ID }}
+      APP_SECRET: ${{ secrets.APP_SECRET }}
+      TEMPLATE_ID: '4tmjdMN7--Bn5G_JjeE_3CuDZIHnrzT3mfL3aaxMghI'
+      USER_ID: 'o6_7W5jhk4ZzVfupqFawzBNYw7_A'
+      START_DATE: ${{ secrets.START_DATE }}
+      BIRTHDAY: ${{ secrets.BIRTHDAY }}
+      BIRTHDAY_BOY: ${{ secrets.BIRTHDAY_BOY }}
+      CITY: ${{ secrets.CITY }}
+      XINGZUO: ${{ secrets.XINGZUO }}
