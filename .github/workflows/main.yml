@@ -2,7 +2,7 @@ name: morning
 on:
   push:
   schedule:
-    - cron:  "0 5 * * *"
+    - cron:  "0 1 * * *"
 
 jobs:
   send_message:
@@ -26,7 +26,7 @@ jobs:
       APP_ID: ${{ secrets.APP_ID }}
       APP_SECRET: ${{ secrets.APP_SECRET }}
       TEMPLATE_ID: 'TJW2Da74bvASgbGZFhKX4Lrb9xFGd8rfFudMYOQATTU'
-      USER_ID: 'o6_7W5vviLMdcy1ZCn4A0OG2jwvY'
+      USER_ID: 'o6_7W5jhk4ZzVfupqFawzBNYw7_A'
       START_DATE: ${{ secrets.START_DATE }}
       BIRTHDAY: ${{ secrets.BIRTHDAY }}
       BIRTHDAY_BOY: ${{ secrets.BIRTHDAY_BOY }}
