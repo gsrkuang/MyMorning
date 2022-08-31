@@ -25,7 +25,7 @@ jobs:
     env:
       APP_ID: ${{ secrets.APP_ID }}
       APP_SECRET: ${{ secrets.APP_SECRET }}
-      TEMPLATE_ID: '4tmjdMN7--Bn5G_JjeE_3CuDZIHnrzT3mfL3aaxMghI'
+      TEMPLATE_ID: 'VprWJWYEktT5tFZkrqmm0pb5ZJSOQaDlz0A_M9Eo-kY'
       USER_ID: 'o6_7W5jhk4ZzVfupqFawzBNYw7_A'
       START_DATE: ${{ secrets.START_DATE }}
       BIRTHDAY: ${{ secrets.BIRTHDAY }}
